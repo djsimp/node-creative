@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular.min.js"></script>
+<script src="javascripts/app.js"></script>
+<link rel="stylesheet" type="text/css" href="stylesheets/style.css">
+  <meta charset="utf-8">
+  <title>Web Journal</title>
+</head>
+<body>
+  <div id='app' ng-app='app' ng-controller='mainCtrl'>
+    <h1> Enter A New Journal Entry</h1>
+    <form id="newEntry" ng-submit="addEntry()">
+      Date (mm/dd/yyyy): <input type="text" ng-model="date" value=""><br>
+      Entry: <br><input type="text" ng-model="entry" value=""><br>
+      <input type="submit" value="Submit">
+    </form>
+    <div ng-if='!journal.length' class='no-pokemon center stretch'>
+      <h1 class='h1'>
+        Set up your endpoint at `/journal` to get this view working
+      </h1>
+    </div>
+
+    <ul ng-if='journal.length' class='list center stretch'>
+      <li ng-repeat='day in journal' class='pokemon'>
+        <h1>{{ day.date }}</h1>
+        <p class='entry'>{{ day.entry }}</p>
+      </li>
+    </ul>
+  </div>
+
+</body>
+</html>
